@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<FirebaseUser> _gSignin() async {
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+    await googleSignInAccount.authentication;
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleSignInAuthentication.accessToken,
       idToken: googleSignInAuthentication.idToken,
@@ -102,9 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future _createUser() async {
+    print('create user');
     FirebaseUser user = await _auth
         .createUserWithEmailAndPassword(
-            email: "ramthegreaterer@gmail.com", password: "hiltongrace2345")
+        email: "ramthegreaterer@gmail.com", password: "hiltongrace2345")
         .then((userNew) {
       print("User created ${userNew.user.displayName}");
       print("Email: ${userNew.user.email}");
@@ -123,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _signInWithEmail() {
     _auth
         .signInWithEmailAndPassword(
-            email: "ramthegreaterer@gmail.com", password: "hiltongrace2345")
+        email: "ramthegreaterer@gmail.com", password: "hiltongrace2345")
         .catchError((error) {
       print("Something went wrong! ${error.toString()}");
     }).then((newUser) {
